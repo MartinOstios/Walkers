@@ -15,23 +15,25 @@
         </section>
         <section class="form-container">
             <form action="https://fastapi-1-k9255109.deta.app/login" method="post">
-                <h1>Inicia sesión</h1>
+                <h1>Registrarse</h1>
+                <p>Entra para que puedas empezar a <br>comprar tus diseños soñados o diseñarlos.</p>
+                <label for="email">Nombre de usuario</label>
+                <input type="text" id="username" name="username" placeholder="nombre de usuario" class="inputAuth">
                 <label for="email">Email</label>
-                <input type="text" id="email" name="username" placeholder="email" class="inputAuth">
+                <input type="text" id="email" name="email" placeholder="email" class="inputAuth">
                 <label for="password">Contraseña</label>
                 <div class="input">
                     <ion-icon name="eye-outline" class="icon-show"></ion-icon>
                     <ion-icon name="eye-off-outline" class="icon-ocult"></ion-icon>
                     <input type="password" id="password" name="password" placeholder="contraseña" class="inputAuth">
                 </div>
-                <a href="" class="btnSubmit"><button type="submit">Iniciar sesión</button></a>
+                <a href="" class="btnSubmit"><button type="submit">Empezar</button></a>
             </form>
         </section>
     </main>
     <div class="message">
-        <a href="register.html">registrarme </a>
-        <span>o</span>
-        <a href="#"> recuperar contraseña</a>
+        <span>¿Actualmente tienes una cuenta?<br></span>
+        <a href="login.html"> Iniciar sesión</a>
     </div>  
 </body>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

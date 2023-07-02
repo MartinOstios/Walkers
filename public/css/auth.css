@@ -145,11 +145,11 @@ input::placeholder {
 
 .message {
     text-align: center;
-    
+
     margin-top: 30px;
 }
 
-span{
+span {
     color: #FFFFFF;
     font-size: 18px;
     font-family: Montserrat;
@@ -158,7 +158,7 @@ span{
     line-height: normal;
 }
 
-.message>a{
+.message>a {
     text-decoration: none;
     color: #82C8FF;
     font-size: 18px;
@@ -168,7 +168,7 @@ span{
     line-height: normal;
 }
 
-.message>a:hover{
+.message>a:hover {
     text-decoration: underline;
 }
 
@@ -194,4 +194,8 @@ span{
         font-size: 18px;
     }
 
+}
+
+p {
+    margin-top: 15px;
 }
