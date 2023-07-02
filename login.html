@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/css/auth.css">
+    <title> 👟 Walkers 👟 | Login</title>
+</head>
+
+<body>
+    <main>
+        <section class="image-container">
+            <img src="public/images/login-logo.png" alt="" class="login-img">
+        </section>
+        <section class="form-container">
+            <form action="https://fastapi-1-k9255109.deta.app/login" method="post">
+                <h1>Inicia sesión</h1>
+                <label for="email">Email</label>
+                <input type="text" id="email" name="username" placeholder="email" class="inputAuth">
+                <label for="password">Contraseña</label>
+                <div class="input">
+                    <ion-icon name="eye-outline" class="icon-show"></ion-icon>
+                    <ion-icon name="eye-off-outline" class="icon-ocult"></ion-icon>
+                    <input type="text" id="password" name="password" placeholder="contraseña" class="inputAuth">
+                </div>
+                <a href="" class="btnSubmit"><button type="submit">Iniciar sesión</button></a>
+            </form>
+        </section>
+    </main>
+    <div class="message">
+        <a href="#">registrarme </a>
+        <span>o</span>
+        <a href="#"> recuperar contraseña</a>
+    </div>  
+</body>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</html>
