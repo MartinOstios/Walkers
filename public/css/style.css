@@ -68,7 +68,6 @@ header {
     background-image: url(../images/landing-background.jpeg);
     background-size: cover;
     background-position: center center;
-    height: 80vh;
     align-items: center;
     justify-content: center;
 }
@@ -80,7 +79,7 @@ header {
     border-radius: 45px;
     background-color: #FFEFE1;
     padding: 50px;
-    margin: 20px;
+    margin: 100px;
     font-family: 'Montserrat', 'sans-serif';
     gap: 20px;
 }
@@ -425,11 +424,27 @@ footer {
 
 @media (width < 700px) {
     .nav-desktop {
-        display: none;
+        position: absolute;
+        top: 136px;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .navbar-logo{
+        background-color: red;
+    }
+
+    .buttons{
+        order: 1;
     }
 
     .nav-phone {
         display: contents;
+    }
+
+    header{
+        padding: 10px;
     }
 
     .filters{
