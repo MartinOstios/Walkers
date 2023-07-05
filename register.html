@@ -14,18 +14,18 @@
             <img src="public/images/login-logo.png" alt="" class="login-img">
         </section>
         <section class="form-container">
-            <form action="https://fastapi-1-k9255109.deta.app/login" method="post">
+            <form id="form">
                 <h1>Registrarse</h1>
                 <p>Entra para que puedas empezar a <br>comprar tus diseños soñados o diseñarlos.</p>
                 <label for="email">Nombre de usuario</label>
-                <input type="text" id="username" name="username" placeholder="nombre de usuario" class="inputAuth">
+                <input type="text" id="username" name="username" placeholder="nombre de usuario" class="inputAuth" required>
                 <label for="email">Email</label>
-                <input type="text" id="email" name="email" placeholder="email" class="inputAuth">
+                <input type="text" id="email" name="email" placeholder="email" class="inputAuth" required>
                 <label for="password">Contraseña</label>
                 <div class="input">
                     <ion-icon name="eye-outline" class="icon-show"></ion-icon>
                     <ion-icon name="eye-off-outline" class="icon-ocult"></ion-icon>
-                    <input type="password" id="password" name="password" placeholder="contraseña" class="inputAuth">
+                    <input type="password" id="password" name="password" placeholder="contraseña" class="inputAuth" required>
                 </div>
                 <a href="" class="btnSubmit"><button type="submit">Empezar</button></a>
             </form>
@@ -38,5 +38,6 @@
 </body>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="public/js/register.js"></script>
 
 </html>
