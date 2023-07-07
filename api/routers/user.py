@@ -1,7 +1,6 @@
 from fastapi import APIRouter, HTTPException, status
 from db.client import db
 from db.models.user import UserOut, UserIn, UserDB
-from db.schemas.user import user_schema
 from passlib.context import CryptContext
 from bson import ObjectId
 
