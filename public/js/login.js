@@ -1,5 +1,4 @@
 let form = document.querySelector("#login-form");
-
 form.addEventListener("submit", function (e) {
     e.preventDefault();
     const prePayload = new FormData(form);
@@ -8,7 +7,21 @@ form.addEventListener("submit", function (e) {
         method: "POST",
         body: payload
     })
-    .then(res => res.json())
-    .then(data => console.log(data))
-    .catch(err => alert(err));
+        .then(res => res.json())
+        .then(data => {
+            const cookieDuration = 1;
+            const expirationDate = new Date();
+            expirationDate.setDate(expirationDate.getDate() + cookieDuration);
+            const cookieValue = `token=${encodeURIComponent(data['access_token'])}; expires=${expirationDate.toUTCString()}; path=/`;
+            document.cookie = cookieValue;
+        })
+        .catch(err => console.log(err));
 })
+
+function save_token(access_token) {
+    token = access_token;
+}
+
+function get_token() {
+    return token;
+}
