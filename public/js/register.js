@@ -1,4 +1,5 @@
 const form = document.querySelector("#form");
+const textAlert = document.querySelector('#alert');
 
 form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -18,7 +19,14 @@ form.addEventListener('submit', function (e) {
         headers: {
             'Content-Type': 'application/json'
         }
-    }).then(res => res.json())
-    .then(data => console.log(data))
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data['id'] != null){
+            location.replace('http://127.0.0.1:5500/login.html');
+        }else{
+            textAlert.innerHTML = 'Error: ' + data['detail'];
+        }
+    })
     .catch(err => console.log(err))
 })

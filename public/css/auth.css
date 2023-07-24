@@ -199,3 +199,11 @@ span {
 p {
     margin-top: 15px;
 }
+
+#alert{
+    color: black;
+}
+
+#login-alert{
+    color: black;
+}

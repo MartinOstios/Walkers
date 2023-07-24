@@ -1,4 +1,5 @@
 let form = document.querySelector("#login-form");
+let loginAlert = document.querySelector('#login-alert')
 form.addEventListener("submit", function (e) {
     e.preventDefault();
     const prePayload = new FormData(form);
@@ -9,19 +10,16 @@ form.addEventListener("submit", function (e) {
     })
         .then(res => res.json())
         .then(data => {
-            const cookieDuration = 1;
-            const expirationDate = new Date();
-            expirationDate.setDate(expirationDate.getDate() + cookieDuration);
-            const cookieValue = `token=${encodeURIComponent(data['access_token'])}; expires=${expirationDate.toUTCString()}; path=/`;
-            document.cookie = cookieValue;
+            if (data['access_token'] != null) {
+                const cookieDuration = 1;
+                const expirationDate = new Date();
+                expirationDate.setDate(expirationDate.getDate() + cookieDuration);
+                const cookieValue = `token=${encodeURIComponent(data['access_token'])}; expires=${expirationDate.toUTCString()}; path=/`;
+                document.cookie = cookieValue;
+                location.replace('http://127.0.0.1:5500/profile.html')
+            }else{
+                loginAlert.innerHTML = data['detail'];
+            }
         })
         .catch(err => console.log(err));
 })
-
-function save_token(access_token) {
-    token = access_token;
-}
-
-function get_token() {
-    return token;
-}
