@@ -4,11 +4,12 @@ from db.models.user import UserIn, UserOut, UserDB
 from db.schemas.user import search_user, verify_password
 from jose import JWTError, jwt
 from datetime import datetime, timedelta
+from bson import ObjectId
 router = APIRouter()
 
 SECRET_KEY = "3bf9cac2aee8eaeaafb3cfd8bdaedd7d9a1e68bf8c0321dd9d3b8d476c548dc3"
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRES_MINUTES = 1
+ACCESS_TOKEN_EXPIRES_MINUTES = 10
 
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
@@ -31,7 +32,7 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
                             headers={'WWW-Authenticate': 'Bearer'})
     
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRES_MINUTES)
-    access_token = create_access_token(data={'sub': user.username}, expires_delta=access_token_expires)
+    access_token = create_access_token(data={'sub': user.id}, expires_delta=access_token_expires)
     return {'access_token': access_token, 'token_type': 'bearer'}
 
 def get_current_user(token: str = Depends(oauth2_scheme)):
@@ -42,12 +43,12 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         print(f'payload {payload}')
-        username: str = payload.get('sub')
-        if username is None:
+        id: str = payload.get('sub')
+        if id is None:
             raise credentials_exception
     except JWTError:
         raise credentials_exception
-    user = search_user('username', username)
+    user = search_user('_id', ObjectId(id))
     if user is None:
         raise credentials_exception
     return UserOut(**user.dict())

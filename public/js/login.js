@@ -21,5 +21,5 @@ form.addEventListener("submit", function (e) {
                 loginAlert.innerHTML = data['detail'];
             }
         })
-        .catch(err => console.log(err));
+        .catch(err => loginAlert.innerHTML = 'Error de conexión');
 })

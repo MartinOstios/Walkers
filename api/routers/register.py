@@ -11,6 +11,7 @@ async def register(user: UserIn):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail='User already in DB')
     id = db.users.insert_one({'username': user.username,
                               'email': user.email,
+                              'rol': user.rol,
                               'password': password_hash(user.plain_password)}).inserted_id
     user = UserOut(**user.dict())
     user.id = str(id)

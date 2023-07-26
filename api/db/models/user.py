@@ -4,6 +4,7 @@ class UserBase(BaseModel):
     id: str | None
     username: str
     email: str
+    rol: str
     
 class UserIn(UserBase):
     plain_password: str

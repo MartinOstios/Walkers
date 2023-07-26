@@ -1,14 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>👟 Walkers 👟 | Profile</title>
+    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/profile.css">
+    <link rel="shortcut icon" href="public/images/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
-    <h1 class="title">¡Bienvenido! </h1>
-    <p class="id">ID: </p>
-    <p class="email">Correo: </p>
+    <!-- Inicio Header -->
+    <header>
+        <!-- Nav celular -->
+        <div class="nav-phone">
+            <div class="logo-circle">
+                <a href="index.html">
+                    <img src="public/images/navbar-logo-circle.png" alt="">
+                </a>
+            </div>
+            <div class="menu">
+                <a href="#" id="menu-hamburger">
+                    <img src="public/images/navbar-menu.png" alt="">
+                </a>
+            </div>
+        </div>
+
+
+        <!-- Nav pc -->
+        <div class="nav-desktop">
+            <div class="buttons">
+                <a id="btnCreate" class="button" href="#">Crear</a>
+                <a id="btnShop" class="button" href="catalogo.html">Comprar</a>
+            </div>
+            <a href="index.html" class="navbar-logo">
+                <img src="public/images/navbar-logo-text.png" alt="">
+            </a>
+            <div class="icons">
+                <a href="#">
+                    <img src="public/images/navbar-search.png" alt="">
+                </a>
+                <a href="#" id="navbar-user">
+                    <img src="public/images/navbar-user.png" alt="">
+                </a>
+                <a href="#">
+                    <img src="public/images/navbar-cart.png" alt="">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <aside class="side-bar">
+            <div class="close-btn">
+                <img src="public/images/profile/exit.png" alt="" class="clickable" id="close-button">
+            </div>
+            <div class="profile-container">
+                <div class="profile-info">
+                    <img src="public/images/profile/user.png" alt="">
+                    <div>
+                        <h3 id="user-name">John Doe</h3>
+                        <p id="user-rol">Usuario</p>
+                    </div>
+                </div>
+            </div>
+            <div class="buttons-container">
+                <div class="profile-btn clickable active">
+                    <img src="public/images/profile/profile.png" alt="">
+                    <p>Perfil</p>
+                </div>
+                <div class="design-button clickable">
+                    <img src="public/images/profile/design.png" alt="">
+                    <p>Mis diseños</p>
+                </div>
+                <div class="product-button clickable">
+                    <img src="public/images/profile/product.png" alt="">
+                    <p>Productos</p>
+                </div>
+                <div class="config-button clickable">
+                    <img src="public/images/profile/config.png" alt="">
+                    <p>Configuración</p>
+                </div>
+                <div class="exit-button clickable">
+                    <img src="public/images/profile/close.png" alt="">
+                    <p>Cerrar sesión</p>
+                </div>
+            </div>
+        </aside>
+        <section class="profile">
+            <div class="modify-container">
+                <h1>Modifica tus datos</h1>
+                <div class="image-container">
+                    <img src="" alt="">
+                    <button><img src="public/images/profile/edit-icon.png" alt="">Cambiar</button>
+                </div>
+                <form action="">
+                    <div class="inputs">
+                        <div>
+                            <label for="username">Nombre de usuario</label>
+                            <input type="text" id="username" name="username">
+                        </div>
+                        <div class="input-correo">
+                            <label for="email">Correo</label>
+                            <input type="text" id="email" name="email">
+                        </div>
+                        <div>
+                            <label for="password">Contraseña</label>
+                            <input type="text   " id="password" name="password">
+                        </div>
+                    </div>
+                    <button type="submit" class="btnSubmit">Modificar</button>
+                </form>
+            </div>
+        </section>
+        <section class="designs none">
+
+        </section>
+        <section class="products none">
+
+        </section>
+        <section class="config none">
+
+        </section>
+        <footer id="footer">
+            <p>Siguenos en redes sociales</p>
+            <div class="footer-icons">
+                <a href="#">
+                    <img src="public/images/facebook-logo.png" alt="">
+                </a>
+                <a href="#">
+                    <img src="public/images/instagram-logo.png" alt="">
+                </a>
+                <a href="#">
+                    <img src="public/images/linkedin-logo.png" alt="">
+                </a>
+                <a href="#">
+                    <img src="public/images/twitter-logo.png" alt="">
+                </a>
+                <a href="#">
+                    <img src="public/images/youtube-logo.png" alt="">
+                </a>
+            </div>
+            <span>Copyright @ 2023</span>
+        </footer>
+    </main>
+
 </body>
 <script src="public/js/profile.js"></script>
+
 </html>

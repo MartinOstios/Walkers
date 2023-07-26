@@ -8,7 +8,8 @@ form.addEventListener('submit', function (e) {
     let data = {
         'username': payload[0],
         'email': payload[1],
-        'plain_password': payload[2]
+        'plain_password': payload[2],
+        'rol': 'Usuario'
     }
     data = JSON.stringify(data);
     console.log(data);
