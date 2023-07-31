@@ -2,9 +2,13 @@ from fastapi import APIRouter, HTTPException, status
 from db.models.user import UserIn, UserOut, UserDB
 from db.schemas.user import password_hash, search_user
 from db.client import db
-router = APIRouter()
+router = APIRouter(tags=['Register'])
 
-@router.post('/register', status_code=status.HTTP_201_CREATED)
+@router.post('/register',
+            response_model=UserOut,
+            status_code=status.HTTP_201_CREATED,
+            name='Registro',
+            response_description='Usuario creado satisfactoriamente')
 async def register(user: UserIn):
     user_db = search_user('username', user.username)
     if user_db:

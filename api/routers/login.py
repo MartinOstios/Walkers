@@ -1,18 +1,14 @@
 from fastapi import APIRouter, Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from db.models.user import UserIn, UserOut, UserDB
+from fastapi.security import OAuth2PasswordRequestForm
 from db.schemas.user import search_user, verify_password
-from jose import JWTError, jwt
+from jose import jwt
 from datetime import datetime, timedelta
-from bson import ObjectId
-router = APIRouter()
+router = APIRouter(tags=['Login'])
 
 SECRET_KEY = "3bf9cac2aee8eaeaafb3cfd8bdaedd7d9a1e68bf8c0321dd9d3b8d476c548dc3"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRES_MINUTES = 10
 
-
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
 def authenticate_user(username: str, password: str):
     user = search_user('username', username)
@@ -23,7 +19,7 @@ def authenticate_user(username: str, password: str):
     return user
 
 
-@router.post('/login')
+@router.post('/login', response_model=dict, status_code=status.HTTP_200_OK, description='Valida la información del usuario y devuelve un access token')
 async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     user = authenticate_user(form_data.username, form_data.password)
     if not user:
@@ -34,30 +30,6 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRES_MINUTES)
     access_token = create_access_token(data={'sub': user.id}, expires_delta=access_token_expires)
     return {'access_token': access_token, 'token_type': 'bearer'}
-
-def get_current_user(token: str = Depends(oauth2_scheme)):
-    credentials_exception = HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED, 
-            detail='Token inválido', 
-            headers={'WWW-Authenticate': 'Bearer'})
-    try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        print(f'payload {payload}')
-        id: str = payload.get('sub')
-        if id is None:
-            raise credentials_exception
-    except JWTError:
-        raise credentials_exception
-    user = search_user('_id', ObjectId(id))
-    if user is None:
-        raise credentials_exception
-    return UserOut(**user.dict())
-
-
-@router.get('/users/me')
-async def get_user_by_token(current_user: UserIn = Depends(get_current_user)):
-    return current_user
-
 
 def create_access_token(data: dict, expires_delta: timedelta | None = None):
     to_encode = data.copy()

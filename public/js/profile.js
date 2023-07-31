@@ -1,5 +1,5 @@
 let closeButton = document.querySelector('#close-button');
-fetch('http://127.0.0.1:8000/users/me', {
+fetch('http://127.0.0.1:8000/user/me', {
     method: "GET",
     headers: {
         'Authorization': 'Bearer ' + document.cookie.split('=')[1]
